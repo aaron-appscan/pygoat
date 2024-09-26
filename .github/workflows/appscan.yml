@@ -41,14 +41,5 @@ jobs:
           asoc_key: ${{secrets.APPSCAN_API_KEY}}
           asoc_secret: ${{secrets.APPSCAN_API_SECRET }}
           application_id: ${{ secrets.APPSCAN_APP_ID }}
-####
-    - name: HCL AppScan SAST Analyzer
-      uses: hcl/appscan-static-analyzer-action@v0.1.1
-      with:
-        key: ${{ secrets.APPSCAN_API_KEY }}
-        secret: ${{ secrets.APPSCAN_API_SECRET }}
-        fileLocation: './'
-        scanType: 'sast'
-        appId: ${{ secrets.APPSCAN_APP_ID }}
         name: sast-report
         path: report/
