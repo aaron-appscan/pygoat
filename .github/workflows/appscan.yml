@@ -32,9 +32,3 @@ jobs:
           asoc_key: ${{ secrets.APPSCAN_API_KEY }}
           asoc_secret: ${{ secrets.APPSCAN_API_SECRET }}
           application_id: ${{ secrets.APPSCAN_APP_ID }}
-
-      - name: Create report directory
-        run: mkdir -p report
-
-      - name: Save SAST Report
-        run: mv sast-report report/
