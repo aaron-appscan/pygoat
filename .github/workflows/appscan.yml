@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sast_analysis:
+  sast_scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -26,19 +26,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Run AppScan SAST scan
         uses: HCL-TECH-SOFTWARE/appscan-sast-action@v1.0.6
         with:
           asoc_key: ${{ secrets.APPSCAN_API_KEY }}
           asoc_secret: ${{ secrets.APPSCAN_API_SECRET }}
           application_id: ${{ secrets.APPSCAN_APP_ID }}
-          
+
       - name: Create report directory
         run: mkdir -p report
 
